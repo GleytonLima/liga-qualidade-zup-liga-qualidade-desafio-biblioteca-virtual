@@ -114,10 +114,10 @@ public class Cenario6 {
 				.noneMatch(r -> r.getMomentoDevolucao().isPresent()));
 		Assertions.assertEquals(1, resultados.size());
 
-		List<Integer> idsUsuariosRetornados = resultados.stream()
-				.map(r -> r.idUsuario).collect(Collectors.toList());
-		List<Integer> idsUsuariosEsperados = usuarios.stream()
-				.map(u -> u.idUsuario).collect(Collectors.toList());
+		Set<Integer> idsUsuariosRetornados = resultados.stream()
+				.map(r -> r.idUsuario).collect(Collectors.toSet());
+		Set<Integer> idsUsuariosEsperados = usuarios.stream()
+				.map(u -> u.idUsuario).collect(Collectors.toSet());
 		Assertions.assertEquals(idsUsuariosEsperados, idsUsuariosRetornados);
 		
 		List<LocalDate> datasPrevistasDevolucaoRetornadas = resultados.stream()
